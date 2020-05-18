@@ -1,0 +1,30 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="jmarkic" id="2020-05-17-admin">
+        <sql>
+            INSERT INTO library_user
+            (id, created_by, created_date, last_modified_by, last_modified_date, date_of_birth, first_name, last_name, user_name)
+            VALUES(nextval('sequence_generator'), 'admin', '2020-05-17 17:00', 'admin', '2020-05-17 17:00', '1700-01-01', 'admin', 'admin', 'admin');
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="jmarkic" id="2020-05-17-contact-types">
+        <sql>
+            INSERT INTO contact_type(id, "type")
+            VALUES(1, 'Telephone');
+            INSERT INTO contact_type(id, "type")
+            VALUES(2, 'Cellphone');
+            INSERT INTO contact_type(id, "type")
+            VALUES(3, 'Email');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
