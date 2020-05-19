@@ -28,9 +28,72 @@
                 first_name varchar(255),
                 last_name varchar(255),
                 user_name varchar(255),
-            primary key (id));
+                primary key (id));
             alter table contact add constraint FK_CONTACT_TYPE_ID foreign key (contact_type_id) references contact_type;
             alter table contact add constraint FK_CONTACT_USER_ID foreign key (user_id) references library_user;
+
+            create table author (
+                id int8 not null,
+                created_by varchar(50) not null,
+                created_date timestamp not null,
+                last_modified_by varchar(50),
+                last_modified_date timestamp,
+                date_of_birth date,
+                first_name varchar(255),
+                last_name varchar(255),
+                primary key (id));
+
+            create table rent (
+                id int8 not null,
+                created_by varchar(50) not null,
+                created_date timestamp not null,
+                last_modified_by varchar(50),
+                last_modified_date timestamp,
+                date_due timestamp,
+                date_from timestamp,
+                date_to timestamp,
+                rent_status_id int8,
+                title_copy_id int8,
+                user_id int8,
+                primary key (id));
+
+            create table rent_status (
+                id int8 not null,
+                status varchar(50),
+                primary key (id));
+
+            create table title (
+                id int8 not null,
+                created_by varchar(50) not null,
+                created_date timestamp not null,
+                last_modified_by varchar(50),
+                last_modified_date timestamp,
+                name varchar(50),
+                primary key (id));
+
+            create table title_author (
+                id int8 not null,
+                created_by varchar(50) not null,
+                created_date timestamp not null,
+                last_modified_by varchar(50),
+                last_modified_date timestamp,
+                author_id int8,
+                title_id int8,
+                primary key (id));
+
+            create table title_copy (
+                id int8 not null,
+                version varchar(255),
+                title_id int8,
+                primary key (id));
+
+            alter table rent add constraint FK_RENT_STATUS_ID foreign key (rent_status_id) references rent_status;
+            alter table rent add constraint FK_RENT_TITLE_COPY_ID foreign key (title_copy_id) references title_copy ;
+            alter table rent add constraint FK_RENT_USER_ID foreign key (user_id) references library_user;
+            alter table title_author add constraint FK_TITLE_AUTHOR_AUTHOR_ID foreign key (author_id) references author;
+            alter table title_author add constraint FK_TITLE_AUTHOR_TITLE_ID foreign key (title_id) references title;
+            alter table title_copy add constraint FK_TITLE_COPY_TITLE_ID foreign key (title_id) references library_user;
+
         </sql>
     </changeSet>
 

@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "contact_type")
-public class ContactType {
+@Table(name = "rent_status")
+public class RentStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
@@ -23,5 +23,5 @@ public class ContactType {
     private Long id;
 
     @Column
-    private String type;
+    private String status;
 }
