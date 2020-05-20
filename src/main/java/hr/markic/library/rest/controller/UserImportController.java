@@ -41,7 +41,7 @@ public class UserImportController {
         try {
             Optional<UserDTO> user = imageParserService.importUserFromImageBytes(file.getBytes());
 
-            if (user.isPresent() && user.get().getIsValid()) {
+            if (user.isPresent()) {
                 Optional<User> userExisting = userService.findOneByIDNumber(user.get().getIdentityCardId());
                 if (!userExisting.isPresent()){
                     userService.saveUser(user.get());
