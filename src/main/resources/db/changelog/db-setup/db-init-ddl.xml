@@ -28,6 +28,8 @@
                 first_name varchar(255),
                 last_name varchar(255),
                 user_name varchar(255),
+                identity_card_id varchar(255) unique,
+                is_valid boolean,
                 primary key (id));
             alter table contact add constraint FK_CONTACT_TYPE_ID foreign key (contact_type_id) references contact_type;
             alter table contact add constraint FK_CONTACT_USER_ID foreign key (user_id) references library_user;

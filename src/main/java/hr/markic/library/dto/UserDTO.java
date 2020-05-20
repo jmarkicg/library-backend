@@ -12,4 +12,8 @@ public class UserDTO extends PersonDTO {
     private String userName;
 
     private Set<ContactDTO> contacts;
+
+    private Boolean isValid;
+
+    private String identityCardId;
 }

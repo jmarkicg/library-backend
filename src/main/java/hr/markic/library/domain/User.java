@@ -26,13 +26,19 @@ public class User extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator", allocationSize = 1)
     private Long id;
 
     @Column
     private String userName;
 
+    @Column(unique = true)
+    private String identityCardId;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval=true)
     private Set<Contact> contacts = new HashSet<>();
+
+    @Column
+    private Boolean isValid;
 
 }

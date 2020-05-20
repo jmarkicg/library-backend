@@ -25,6 +25,13 @@ public interface UserService {
     Optional<User> findOne(Long userId);
 
     /**
+     * Retrieves one {@link User} instance by ID number.
+     * @param idNumber
+     * @return
+     */
+    Optional<User> findOneByIDNumber(String idNumber);
+
+    /**
      * Retrieves one {@link User} instance by userName.
      * @param userName
      * @return
@@ -43,5 +50,6 @@ public interface UserService {
      * @param userId
      */
     void deleteUser(Long userId);
+
 
 }

@@ -21,6 +21,6 @@ public class Author extends Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator", allocationSize = 1)
     private Long id;
 }

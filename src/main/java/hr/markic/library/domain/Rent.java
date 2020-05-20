@@ -25,7 +25,7 @@ public class Rent extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator", allocationSize = 1)
     private Long id;
 
     @ManyToOne

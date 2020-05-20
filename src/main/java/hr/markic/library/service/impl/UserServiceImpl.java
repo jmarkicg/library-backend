@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -38,6 +39,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Optional<User> findOneByIDNumber(String idNumber) {
+        return userRepository.findByIdentityCardId(idNumber);
+    }
+
+    @Override
     public Optional<User> findOneByUsername(String userName) {
         return userRepository.findByUserName(userName);
     }
@@ -47,9 +53,12 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toEntity(userDto);
 
         Set<Contact> contacts = user.getContacts();
-        for (Contact contact : contacts) {
-            contact.setUser(user);
+        if (Objects.nonNull(contacts)){
+            for (Contact contact : contacts) {
+                contact.setUser(user);
+            }
         }
+
         user = userRepository.save(user);
         return userMapper.toDTO(user);
     }
