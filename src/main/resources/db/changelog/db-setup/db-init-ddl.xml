@@ -99,4 +99,10 @@
         </sql>
     </changeSet>
 
+    <changeSet author="jmarkic" id="2020-05-19-1">
+        <sql>
+            CREATE INDEX RENT_INDEX ON rent (date_due, rent_status_id, user_id);
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
